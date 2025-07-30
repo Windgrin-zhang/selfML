@@ -1,7 +1,3 @@
-<!-- 启用 MathJax（仅在支持 HTML 的环境中有效，如 GitHub Pages、Jekyll、本地 Markdown 预览插件） -->
-<script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
 # Machine Learning
 ## knn代码练习
 因为不喜欢命令行运行，将所有路径改为相对路径
