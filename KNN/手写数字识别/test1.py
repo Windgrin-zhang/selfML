@@ -15,7 +15,7 @@ Returns:
 	sortedClassCount[0][0] - 分类结果
 
 Modify:
-	2025-07-30
+	2025-7-30
 """
 def classify0(inX, dataSet, labels, k):
 	#numpy函数shape[0]返回dataSet的行数
@@ -55,7 +55,7 @@ Returns:
 	returnVect - 返回的二进制图像的1x1024向量
 
 Modify:
-	2025-07-30
+	2025-7-30
 """
 def img2vector(filename):
 	#创建1x1024零向量
@@ -75,19 +75,14 @@ def img2vector(filename):
 """
 函数说明:手写数字分类测试
 
-Parameters:
-	无
-Returns:
-	无
-
 Modify:
-	2025-07-30
+    2025-7-30
 """
 def handwritingClassTest():
 	#测试集的Labels
 	hwLabels = []
 	#返回trainingDigits目录下的文件名
-	trainingFileList = listdir('KNN/手写数字识别/trainingDigits')
+	trainingFileList = listdir('ML-W3-5/kNN/3.数字识别/trainingDigits')
 	#返回文件夹下文件的个数
 	m = len(trainingFileList)
 	#初始化训练的Mat矩阵,测试集
@@ -101,9 +96,9 @@ def handwritingClassTest():
 		#将获得的类别添加到hwLabels中
 		hwLabels.append(classNumber)
 		#将每一个文件的1x1024数据存储到trainingMat矩阵中
-		trainingMat[i,:] = img2vector('KNN/手写数字识别/testDigits/%s' % (fileNameStr))
+		trainingMat[i,:] = img2vector('ML-W3-5/kNN/3.数字识别/trainingDigits/%s' % (fileNameStr))
 	#返回testDigits目录下的文件名
-	testFileList = listdir('KNN/手写数字识别/testDigits')
+	testFileList = listdir('ML-W3-5/kNN/3.数字识别/testDigits')
 	#错误检测计数
 	errorCount = 0.0
 	#测试数据的数量
@@ -127,13 +122,8 @@ def handwritingClassTest():
 """
 函数说明:main函数
 
-Parameters:
-	无
-Returns:
-	无
-
 Modify:
-	2025-07-30
+	2025-7-30
 """
 if __name__ == '__main__':
 	handwritingClassTest()
