@@ -57,7 +57,7 @@ def classify0(inX, dataSet, labels, k):
 	#python3中用items()替换python2中的iteritems()
 	#key=operator.itemgetter(1)根据字典的值进行排序
 	#key=operator.itemgetter(0)根据字典的键进行排序
-	#reverse降序排序字典                                                                             我们需要的是key不是value，所以需要根据value进行排序
+	#reverse降序排序字典                                                                             我们需要的是各value的数量的降序排序
 	sortedClassCount = sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)
 	#返回次数最多的类别,即所要分类的类别
 	return sortedClassCount[0][0]
