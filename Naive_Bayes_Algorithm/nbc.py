@@ -3,7 +3,7 @@ from sklearn.naive_bayes import MultinomialNB
 import matplotlib.pyplot as plt
 import os
 import random
-import jieba
+import jieba                                                    #jieba中文分词
 
 def TextProcessing(folder_path, test_size = 0.2):
 	folder_list = os.listdir(folder_path)						#查看folder_path下的文件
@@ -95,14 +95,14 @@ if __name__ == '__main__':
 	#文本预处理
 	folder_path = '/home/alex/VScode/ML_1/ML-W3-5/Naive Bayes/SogouC/Sample'				#训练集存放地址
 	all_words_list, train_data_list, test_data_list, train_class_list, test_class_list = TextProcessing(folder_path, test_size=0.2)
-	print(all_words_list)
+	#print(all_words_list)
 	# 生成stopwords_set
 	stopwords_file = '/home/alex/VScode/ML_1/ML-W3-5/Naive Bayes/stopwords_cn.txt'
 	stopwords_set = MakeWordsSet(stopwords_file)
 
 
 	test_accuracy_list = []
-	deleteNs = range(0, 1000, 20)				#0 20 40 60 ... 980
+	deleteNs = range(0, 1000, 100)				#0 10 20 30 ... 990
 	for deleteN in deleteNs:
 		feature_words = words_dict(all_words_list, deleteN, stopwords_set)
 		train_feature_list, test_feature_list = TextFeatures(train_data_list, test_data_list, feature_words)
