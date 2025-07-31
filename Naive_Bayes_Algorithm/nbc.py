@@ -95,7 +95,7 @@ if __name__ == '__main__':
 	#文本预处理
 	folder_path = '/home/alex/VScode/ML_1/ML-W3-5/Naive Bayes/SogouC/Sample'				#训练集存放地址
 	all_words_list, train_data_list, test_data_list, train_class_list, test_class_list = TextProcessing(folder_path, test_size=0.2)
-
+	print(all_words_list)
 	# 生成stopwords_set
 	stopwords_file = '/home/alex/VScode/ML_1/ML-W3-5/Naive Bayes/stopwords_cn.txt'
 	stopwords_set = MakeWordsSet(stopwords_file)
@@ -109,8 +109,8 @@ if __name__ == '__main__':
 		test_accuracy = TextClassifier(train_feature_list, test_feature_list, train_class_list, test_class_list)
 		test_accuracy_list.append(test_accuracy)
 
-	# ave = lambda c: sum(c) / len(c)
-	# print(ave(test_accuracy_list))
+	ave = lambda c: sum(c) / len(c)
+	print(ave(test_accuracy_list))
 
 	plt.figure()
 	plt.plot(deleteNs, test_accuracy_list)

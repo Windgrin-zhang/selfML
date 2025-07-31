@@ -91,5 +91,8 @@ def spamTest():
             print("分类错误的测试集：",docList[docIndex])
     print('错误率：%.2f%%' % (float(errorCount) / len(testSet) * 100))
 
+
 if __name__ == '__main__':
+   
+
     spamTest()
