@@ -19,7 +19,7 @@ Returns:
 	sortedClassCount[0][0] - 分类结果
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def classify0(inX, dataSet, labels, k):
 	#numpy函数shape[0]返回dataSet的行数
@@ -62,7 +62,7 @@ Returns:
 	classLabelVector - 分类Label向量
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def file2matrix(filename):
 	#打开文件,此次应指定编码，
@@ -108,7 +108,7 @@ Parameters:
 Returns:
 	无
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def showdatas(datingDataMat, datingLabels):
 	#设置汉字格式
@@ -181,7 +181,7 @@ Returns:
 	minVals - 数据最小值
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def autoNorm(dataSet):
 	#获得数据的最小值
@@ -211,7 +211,7 @@ Returns:
 	无
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def datingClassTest():
 	#打开的文件名
@@ -247,7 +247,7 @@ Returns:
 	无
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 def classifyPerson():
 	#输出结果
@@ -280,7 +280,7 @@ Returns:
 	无
 
 Modify:
-	2017-03-24
+	2025-7-30
 """
 if __name__ == '__main__':
 	datingClassTest()

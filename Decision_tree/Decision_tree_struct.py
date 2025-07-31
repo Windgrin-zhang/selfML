@@ -18,20 +18,7 @@ def get_font():
 font = get_font()
 
 
-"""
-Function Description: Calculate the empirical entropy (Shannon entropy) of a given dataset
 
-Parameters:
-    dataSet - dataset
-Returns:
-    shannonEnt - empirical entropy (Shannon entropy)
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def calcShannonEnt(dataSet):
     numEntires = len(dataSet)                        # Return the number of rows in the dataset
     labelCounts = {}                                # Dictionary to save the count of each label
@@ -46,21 +33,7 @@ def calcShannonEnt(dataSet):
         shannonEnt -= prob * log(prob, 2)            # Calculate using formula
     return shannonEnt                                # Return empirical entropy (Shannon entropy)
 
-"""
-Function Description: Create test dataset
 
-Parameters:
-    None
-Returns:
-    dataSet - dataset
-    labels - feature labels
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-20
-"""
 def createDataSet():
     dataSet = [[0, 0, 0, 0, 'no'],                        # dataset
             [0, 0, 0, 1, 'no'],
@@ -80,22 +53,7 @@ def createDataSet():
     labels = ['Age', 'Has Job', 'Has House', 'Credit Rating']        # feature labels
     return dataSet, labels                             # Return dataset and classification attributes
 
-"""
-Function Description: Split dataset according to given feature
 
-Parameters:
-    dataSet - dataset to be split
-    axis - feature to split the dataset
-    value - value of the feature to return
-Returns:
-    None
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def splitDataSet(dataSet, axis, value):       
     retDataSet = []                                        # Create list for returned dataset
     for featVec in dataSet:                             # Traverse dataset
@@ -105,20 +63,7 @@ def splitDataSet(dataSet, axis, value):
             retDataSet.append(reducedFeatVec)
     return retDataSet                                      # Return split dataset
 
-"""
-Function Description: Choose the best feature
 
-Parameters:
-    dataSet - dataset
-Returns:
-    bestFeature - index of the feature with maximum information gain (best feature)
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-20
-"""
 def chooseBestFeatureToSplit(dataSet):
     numFeatures = len(dataSet[0]) - 1                    # Number of features
     baseEntropy = calcShannonEnt(dataSet)                 # Calculate Shannon entropy of dataset
@@ -141,20 +86,7 @@ def chooseBestFeatureToSplit(dataSet):
     return bestFeature                                             # Return index of feature with maximum information gain
 
 
-"""
-Function Description: Count the element that appears most in classList (class label)
 
-Parameters:
-    classList - class label list
-Returns:
-    sortedClassCount[0][0] - element that appears most in classList (class label)
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def majorityCnt(classList):
     classCount = {}
     for vote in classList:                                        # Count occurrences of each element in classList
@@ -163,22 +95,7 @@ def majorityCnt(classList):
     sortedClassCount = sorted(classCount.items(), key = operator.itemgetter(1), reverse = True)        # Sort by dictionary value in descending order
     return sortedClassCount[0][0]                                # Return element that appears most in classList
 
-"""
-Function Description: Create decision tree
 
-Parameters:
-    dataSet - training dataset
-    labels - classification attribute labels
-    featLabels - store selected optimal feature labels
-Returns:
-    myTree - decision tree
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-25
-"""
 def createTree(dataSet, labels, featLabels):
     classList = [example[-1] for example in dataSet]            # Get classification labels (loan approval: yes or no)
     if classList.count(classList[0]) == len(classList):            # If all classes are identical, stop further division
@@ -197,20 +114,7 @@ def createTree(dataSet, labels, featLabels):
         myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value), subLabels, featLabels)
     return myTree
 
-"""
-Function Description: Get the number of leaf nodes in decision tree
 
-Parameters:
-    myTree - decision tree
-Returns:
-    numLeafs - number of leaf nodes in decision tree
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def getNumLeafs(myTree):
     numLeafs = 0                                                # Initialize leaves
     firstStr = next(iter(myTree))                                # In python3, myTree.keys() returns dict_keys, not list, so cannot use myTree.keys()[0] to get node attributes, can use list(myTree.keys())[0]
@@ -221,20 +125,6 @@ def getNumLeafs(myTree):
         else:   numLeafs +=1
     return numLeafs
 
-"""
-Function Description: Get the depth of decision tree
-
-Parameters:
-    myTree - decision tree
-Returns:
-    maxDepth - depth of decision tree
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def getTreeDepth(myTree):
     maxDepth = 0                                                # Initialize decision tree depth
     firstStr = next(iter(myTree))                                # In python3, myTree.keys() returns dict_keys, not list, so cannot use myTree.keys()[0] to get node attributes, can use list(myTree.keys())[0]
@@ -246,23 +136,7 @@ def getTreeDepth(myTree):
         if thisDepth > maxDepth: maxDepth = thisDepth            # Update depth
     return maxDepth
 
-"""
-Function Description: Draw node
 
-Parameters:
-    nodeTxt - node name
-    centerPt - text position
-    parentPt - arrow position for annotation
-    nodeType - node format
-Returns:
-    None
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 
 
 def plotNode(nodeTxt, centerPt, parentPt, nodeType):
@@ -273,42 +147,14 @@ def plotNode(nodeTxt, centerPt, parentPt, nodeType):
         xytext=centerPt, textcoords='axes fraction',
         va="center", ha="center", bbox=nodeType, arrowprops=arrow_args, fontproperties=font)
 
-"""
-Function Description: Annotate directed edge attribute values
 
-Parameters:
-    cntrPt, parentPt - used to calculate annotation position
-    txtString - annotation content
-Returns:
-    None
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def plotMidText(cntrPt, parentPt, txtString):
     xMid = (parentPt[0]-cntrPt[0])/2.0 + cntrPt[0]                                            # Calculate annotation position                   
     yMid = (parentPt[1]-cntrPt[1])/2.0 + cntrPt[1]
     createPlot.ax1.text(xMid, yMid, txtString, va="center", ha="center", rotation=30)
 
-"""
-Function Description: Draw decision tree
 
-Parameters:
-    myTree - decision tree (dictionary)
-    parentPt - annotation content
-    nodeTxt - node name
-Returns:
-    None
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
+
 def plotTree(myTree, parentPt, nodeTxt):
     decisionNode = dict(boxstyle="sawtooth", fc="0.8")                                        # Set node format
     leafNode = dict(boxstyle="round4", fc="0.8")                                            # Set leaf node format
@@ -329,20 +175,7 @@ def plotTree(myTree, parentPt, nodeTxt):
             plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
     plotTree.yOff = plotTree.yOff + 1.0/plotTree.totalD
 
-"""
-Function Description: Create drawing panel
 
-Parameters:
-    inTree - decision tree (dictionary)
-Returns:
-    None
-Author:
-    Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Modify:
-    2017-07-24
-"""
 def createPlot(inTree):
     fig = plt.figure(1, facecolor='white')                                                    # Create fig
     fig.clf()                                                                                # Clear fig
