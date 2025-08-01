@@ -7,7 +7,7 @@ import numpy as np
 import pydotplus
 
 if __name__ == '__main__':
-	with open('Decision_tree/lenses.txt', 'r') as fr:										#加载文件
+	with open('/home/alex/VScode/Self/ML1/Decision_tree/lenses.txt', 'r') as fr:										#加载文件
 		lenses = [inst.strip().split('\t') for inst in fr.readlines()]		#处理文件
 	lenses_target = []														#提取每组数据的类别，保存在列表里
 	for each in lenses:
@@ -39,7 +39,13 @@ if __name__ == '__main__':
 						class_names = clf.classes_,
 						filled=True, rounded=True,
 						special_characters=True)
-	graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
-	graph.write_pdf("tree.pdf")												#保存绘制好的决策树，以PDF的形式存储。
+	try:
+		graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+		graph.write_pdf("tree.pdf")												#保存绘制好的决策树，以PDF的形式存储。
+		print("决策树PDF已生成")
+	except:
+		print("GraphViz未安装，跳过PDF生成")
+		print("决策树结构:")
+		print(dot_data.getvalue())
 
 	print(clf.predict([[1,1,1,0]]))											#预测

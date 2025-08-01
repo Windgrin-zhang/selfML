@@ -108,7 +108,7 @@ Parameters:
 Returns:
 	无
 Modify:
-	2025-7-30
+	2025-8-1
 """
 def showdatas(datingDataMat, datingLabels):
 	#设置汉字格式
@@ -215,7 +215,7 @@ Modify:
 """
 def datingClassTest():
 	#打开的文件名
-	filename = "ML-W3-5/kNN/2.海伦约会/datingTestSet.txt"
+	filename = "/home/alex/VScode/Self/ML1/KNN/海伦约会/datingTestSet.txt"
 	#将返回的特征矩阵和分类向量分别存储到datingDataMat和datingLabels中
 	datingDataMat, datingLabels = file2matrix(filename)
 	#取所有数据的百分之十
@@ -257,7 +257,7 @@ def classifyPerson():
 	ffMiles = float(input("每年获得的飞行常客里程数:"))
 	iceCream = float(input("每周消费的冰激淋公升数:"))
 	#打开的文件名
-	filename = "ML-W3-5/kNN/2.海伦约会/datingTestSet.txt"
+	filename = "/home/alex/VScode/Self/ML1/KNN/海伦约会/datingTestSet.txt"
 	#打开并处理数据
 	datingDataMat, datingLabels = file2matrix(filename)
 	#训练集归一化
