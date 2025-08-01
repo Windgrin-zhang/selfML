@@ -49,7 +49,7 @@ def createDataSet():
             [2, 0, 1, 1, 'yes'],
             [2, 1, 0, 1, 'yes'],
             [2, 1, 0, 2, 'yes'],
-            [2, 0, 0, 0, 'no']]
+            [1, 1, 0, 0, 'no']]
     labels = ['Age', 'Has Job', 'Has House', 'Credit Rating']        # feature labels
     return dataSet, labels                             # Return dataset and classification attributes
 
@@ -79,10 +79,11 @@ def chooseBestFeatureToSplit(dataSet):
             prob = len(subDataSet) / float(len(dataSet))           # Calculate probability of subset
             newEntropy += prob * calcShannonEnt(subDataSet)     # Calculate empirical conditional entropy using formula
         infoGain = baseEntropy - newEntropy                     # Information gain
-        # print("The gain of the %d-th feature is %.3f" % (i, infoGain))            # Print information gain of each feature
+        print("The gain of the %d-th feature is %.3f" % (i, infoGain))            # Print information gain of each feature
         if (infoGain > bestInfoGain):                             # Calculate information gain
             bestInfoGain = infoGain                             # Update information gain, find maximum information gain
             bestFeature = i                                     # Record index of feature with maximum information gain
+    #print(i)
     return bestFeature                                             # Return index of feature with maximum information gain
 
 
