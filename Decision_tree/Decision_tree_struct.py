@@ -49,7 +49,7 @@ def createDataSet():
             [2, 0, 1, 1, 'yes'],
             [2, 1, 0, 1, 'yes'],
             [2, 1, 0, 2, 'yes'],
-            [1, 1, 0, 0, 'no']]
+            [2, 0, 0, 0, 'no']]
     labels = ['Age', 'Has Job', 'Has House', 'Credit Rating']        # feature labels
     return dataSet, labels                             # Return dataset and classification attributes
 
